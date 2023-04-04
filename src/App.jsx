@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useGlobalContext } from './context'
+import ReducerBasics from './useReducer'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <div>
         <h1>{name}</h1>
+        <ReducerBasics></ReducerBasics>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
