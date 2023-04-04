@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useGlobalContext } from './context'
-import ReducerBasics from './useReducer'
+import ReducerBasics from './Reducer/useReducer'
 
 function App() {
   const [count, setCount] = useState(0);
