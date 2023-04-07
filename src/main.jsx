@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
 import App from './App'
-import AppContext from './context'
-import './index.css'
+import './toolkit/toolkit.css'
+import { store } from './toolkit/store'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AppContext>
-    <App />
-    </AppContext>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
 )
