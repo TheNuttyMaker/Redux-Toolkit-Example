@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-// import './App.css'
+import { BrowserRouter } from 'react-router-dom'
 import ReducerBasics from './Reducer/useReducer'
 import Navbar from './toolkit/components/Navbar'
 import CartContainer from './toolkit/components/CartContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import { calculateTotals, getCartItems } from './toolkit/features/cart/cartSlice'
 import Modal from './toolkit/components/Modal'
+import { Routing } from './Routing'
+import { getPokemonDetails } from './toolkit/features/pokemon/pokemonSlice'
 
 
 function App() {
-  // const [count, setCount] = useState(0);
   const { cartItems, isLoading } = useSelector((store) => store.cart);
   const { isOpen } = useSelector((store) => store.modal);
+  const { name } = useSelector(store => store.pokemon);
   console.log('here');
   console.log(cartItems);
   console.log(isOpen);
+  console.log(name);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(calculateTotals());
@@ -26,6 +27,13 @@ function App() {
     dispatch(getCartItems('We can pass params also'));
   },[]);
 
+  // Pokemon BEGIN
+  useEffect(() => {
+    dispatch(getPokemonDetails(name));
+  }, []);
+
+  // Pokeomon END
+
   if(isLoading) {
     return (
       <h1 className='loading'>Loading...</h1>
@@ -33,11 +41,13 @@ function App() {
   }
 
   return (
-    <div>
-      { isOpen && <Modal /> }
-      <Navbar />
-      <CartContainer />
-    </div>
+    <BrowserRouter>
+      <div>
+        { isOpen && <Modal /> }
+        <Navbar />
+        <Routing />
+      </div>
+    </BrowserRouter>
   )
 }
 

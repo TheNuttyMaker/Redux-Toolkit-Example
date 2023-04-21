@@ -130,10 +130,16 @@ Variables
     justify-content: space-between;
     align-items: center;
   }
-  nav h3 {
+  nav h3, a {
     margin-bottom: 0;
     letter-spacing: 1px;
     color: var(--clr-white);
+    cursor: pointer;
+  }
+
+  nav a {
+    font-size: 2rem;
+    font-weight: bold;
   }
   .nav-container {
     display: block;
